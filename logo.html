@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Registrarse</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('img\\INICIOS.jpg'); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .form-header div {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .form-header div:hover {
+      background-color: #f0f0f0;
+    }
+
+    .form-header .active {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .form-container .input-group input {
+      width: 100%;
+      padding: 10px;
+      padding-left: 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-container .input-group input:focus {
+      border-color: #007bff;
+    }
+
+    .form-container .input-group i {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #ccc;
+    }
+
+    .form-container .input-group input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container .input-group label {
+      display: inline;
+      margin-left: 5px;
+      color: #666;
+    }
+
+    .form-container button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+
+    .form-container .form-footer {
+      margin-top: 10px;
+    }
+
+    .form-container .form-footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .form-container .form-footer a:hover {
+      text-decoration: underline;
+    } 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-header">
+      <div id="signInTab" class="active">Login</div>
+      <div id="registerTab">Registrarse</div>
+    </div>
+    <div id="signInForm" class="form-container active">
+      <h2>Login</h2>
+      <form action="login.php" method="post">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="Usuario" placeholder="Usuario" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="Password" placeholder="Password" required>
+        </div>
+        <div class="input-group">
+          <input type="checkbox" id="remember-me">
+          <label for="remember-me">Recuerdame</label>
+        </div>
+        <button type="submit">Iniciar</button>
+        <div class="form-footer">
+        </div>
+      </form>
+    </div>
+    <div id="registerForm" class="form-container">
+      <h2>Registrarse</h2>
+      <form action="register.php" method="post">
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" name="Usuario" placeholder="Usuario" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="Password" placeholder="Password" required>
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="ConfirmPassword" placeholder="Confirm password" required>
+        </div>
+        <button type="submit">Registrarse</button>
+        <div class="form-footer">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('signInTab').addEventListener('click', function() {
+      document.getElementById('signInForm').classList.add('active');
+      document.getElementById('registerForm').classList.remove('active');
+      document.getElementById('signInTab').classList.add('active');
+      document.getElementById('registerTab').classList.remove('active');
+    });
+
+    document.getElementById('registerTab').addEventListener('click', function() {
+      document.getElementById('signInForm').classList.remove('active');
+      document.getElementById('registerForm').classList.add('active');
+      document.getElementById('signInTab').classList.remove('active');
+      document.getElementById('registerTab').classList.add('active');
+    });
+  </script>
+</body>
+</html>
